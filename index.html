@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NOXTUA — Agencia de Desarrollo & Diseño</title>
+  <meta name="description" content="NOXTUA: Desarrollo web y diseño UX/UI. Inteligencia, confianza y profesionalismo con identidad inspirada en un búho." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#071126; /* profundo azul noche */
+      --card:#0f1724; /* gris azulado oscuro */
+      --muted:#9aa7b6; /* gris neutro */
+      --accent:#d4a72a; /* ámbar/dorado */
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --container:1100px;
+      --ease:cubic-bezier(.2,.9,.3,1);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg) 0%, #081028 60%);
+      color: #e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:48px 28px;
+    }
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:56px;height:56px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--card), rgba(255,255,255,0.02));box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      flex:0 0 56px;
+    }
+    .brand h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:0.6px}
+    .brand p{margin:0;font-size:0.78rem;color:var(--muted);font-weight:600}
+
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+    .cta{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ffb84c);color:#071126;font-weight:700;text-decoration:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center;padding:64px 0}
+    .hero-left h2{font-size:2.25rem;margin:0 0 12px;font-weight:800;line-height:1.05}
+    .tagline{color:var(--muted);margin-bottom:22px;font-size:1.05rem}
+    .hero-cta{display:flex;gap:14px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#ffd66b);border:none;color:#071126;padding:14px 18px;border-radius:12px;font-weight:700;cursor:pointer;box-shadow:0 8px 30px rgba(212,167,42,0.12);transition:transform .22s var(--ease)}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer}
+    .btn-primary:hover{transform:translateY(-4px)}
+
+    /* Owl card */
+    .owl-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:26px;border-radius:16px;box-shadow:0 12px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Portfolio */
+    .section{padding:48px 0}
+    h3.section-title{font-size:1.25rem;margin:0 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .case{background:var(--card);padding:18px;border-radius:12px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .28s var(--ease),box-shadow .28s var(--ease)}
+    .case:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(2,6,23,0.6)}
+    .case .meta{font-size:0.85rem;color:var(--muted);margin-bottom:12px}
+    .case h4{margin:0 0 12px}
+    .case p{margin:0;color:var(--muted);font-size:0.95rem}
+
+    /* Services row */
+    .services{display:flex;gap:16px}
+    .service{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;flex:1;border:1px solid rgba(255,255,255,0.03)}
+    .service h5{margin:0 0 8px}
+    .service p{margin:0;color:var(--muted)}
+
+    /* Contact */
+    .contact-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    form{display:grid;gap:8px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:inherit;font-size:0.95rem}
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding:36px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);margin-top:36px}
+
+    /* Responsive */
+    @media (max-width:1024px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero{grid-template-columns:1fr 360px}
+    }
+    @media (max-width:720px){
+      header{flex-direction:column;align-items:flex-start}
+      .hero{grid-template-columns:1fr;gap:22px}
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* Small utilities */
+    .kicker{display:inline-block;padding:6px 10px;background:linear-gradient(90deg,rgba(212,167,42,0.14),rgba(255,184,76,0.06));color:var(--accent);border-radius:999px;font-weight:700;font-size:0.82rem}
+
+    /* subtle focus outline for accessibility */
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(212,167,42,0.12);outline-offset:2px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo owl-card" aria-hidden="true">
+          <!-- Simple owl emblem using SVG - space negative eyes + beak -->
+          <svg width="42" height="42" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logotipo NOXTUA: búho">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#1b2b3b" />
+                <stop offset="1" stop-color="#071126" />
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="30" fill="url(#g1)" />
+            <g transform="translate(8,10)">
+              <ellipse cx="16" cy="14" rx="6.6" ry="7.6" fill="#0f2332" />
+              <ellipse cx="40" cy="14" rx="6.6" ry="7.6" fill="#0f2332" />
+              <!-- eyes (space negative) -->
+              <circle cx="16" cy="14" r="2.6" fill="#d4a72a" />
+              <circle cx="40" cy="14" r="2.6" fill="#d4a72a" />
+              <!-- beak -->
+              <path d="M28 22 L24 18 L32 18 Z" fill="#d4a72a" />
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h1>NOXTUA</h1>
+          <p>Desarrollo • Diseño • Estrategia</p>
+        </div>
+      </div>
+
+      <nav aria-label="Menú principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#contacto" class="cta">Contáctanos</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <span class="kicker">Agencia NOXTUA</span>
+          <h2>Diseñamos productos digitales que funcionan y perduran.</h2>
+          <p class="tagline">Combinamos diseño estratégico, ingeniería robusta y experiencia de usuario para crear soluciones que inspiran confianza y potencian negocios.</p>
+
+          <div class="hero-cta">
+            <a class="btn-primary" href="#contacto">Solicitar propuesta</a>
+            <a class="btn-outline" href="#portafolio">Ver portafolio</a>
+          </div>
+
+          <div style="margin-top:26px;display:flex;gap:12px">
+            <div class="owl-card" style="padding:12px;border-radius:10px;min-width:120px">
+              <strong style="display:block">+3 años</strong>
+              <small style="color:var(--muted)">en diseño y desarrollo</small>
+            </div>
+            <div class="owl-card" style="padding:12px;border-radius:10px;min-width:120px">
+              <strong style="display:block">+12 proyectos</strong>
+              <small style="color:var(--muted)">entregados</small>
+            </div>
+          </div>
+        </div>
+
+        <aside class="owl-card" aria-hidden="false" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+          <!-- Larger decorative owl illustration -->
+          <svg viewBox="0 0 300 360" width="100%" height="auto" role="img" aria-label="Ilustración búho NOXTUA">
+            <defs>
+              <linearGradient id="owlGrad" x1="0" x2="1">
+                <stop offset="0" stop-color="#0e2233"/>
+                <stop offset="1" stop-color="#071126"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="300" height="360" rx="20" fill="url(#owlGrad)" />
+            <!-- stylized owl head -->
+            <g transform="translate(40,50)">
+              <ellipse cx="110" cy="80" rx="78" ry="70" fill="#0f2332" />
+              <ellipse cx="70" cy="72" rx="24" ry="28" fill="#071126" />
+              <ellipse cx="150" cy="72" rx="24" ry="28" fill="#071126" />
+              <circle cx="70" cy="72" r="9" fill="#d4a72a" />
+              <circle cx="150" cy="72" r="9" fill="#d4a72a" />
+              <path d="M110 100 L96 82 L124 82 Z" fill="#d4a72a" />
+              <path d="M60 140 C90 170,130 170,160 140" stroke="#1b3446" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+
+          <div style="text-align:center;max-width:320px;color:var(--muted)">Proyectos estratégicos, resultado medible. Diseño con propósito, ingeniería con precisión.</div>
+        </aside>
+      </section>
+
+      <section id="servicios" class="section">
+        <h3 class="section-title">Servicios</h3>
+        <div class="services">
+          <div class="service">
+            <h5>Diseño UX/UI</h5>
+            <p>Investigación de usuarios, prototipos interactivos y sistemas de diseño que escalan con tu producto.</p>
+          </div>
+          <div class="service">
+            <h5>Desarrollo Web</h5>
+            <p>Aplicaciones modernas (React / Next.js), arquitecturas escalables y rendimiento optimizado.</p>
+          </div>
+          <div class="service">
+            <h5>Estrategia & Producto</h5>
+            <p>Roadmaps, análisis de métricas y definición de KPIs para decisiones basadas en datos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="portafolio" class="section">
+        <h3 class="section-title">Portafolio destacado</h3>
+        <div class="grid" role="list">
+          <!-- Case 1 -->
+          <article class="case" role="listitem">
+            <div>
+              <div class="meta">E‑commerce • React • Next.js</div>
+              <h4>Swaply — Plataforma de intercambio</h4>
+              <p>Rediseñamos el flujo de compra y devolvimos un 34% más de conversiones en la etapa de checkout.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <small style="color:var(--muted)">Caso de estudio</small>
+              <a href="#" style="font-weight:700;color:var(--accent);text-decoration:none">Ver →</a>
+            </div>
+          </article>
+
+          <!-- Case 2 -->
+          <article class="case" role="listitem">
+            <div>
+              <div class="meta">B2B SaaS • Product</div>
+              <h4>Fund Fusion — Dashboard financiero</h4>
+              <p>Interfaz limpia y paneles de métricas que redujeron el tiempo de análisis por usuario en 40%.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <small style="color:var(--muted)">Caso de estudio</small>
+              <a href="#" style="font-weight:700;color:var(--accent);text-decoration:none">Ver →</a>
+            </div>
+          </article>
+
+          <!-- Case 3 -->
+          <article class="case" role="listitem">
+            <div>
+              <div class="meta">Branding • Identidad</div>
+              <h4>NOXTUA — Identidad propia</h4>
+              <p>Creación de identidad e imagen corporativa inspirada en la sabiduría del búho: moderna y confiable.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <small style="color:var(--muted)">Caso de estudio</small>
+              <a href="#" style="font-weight:700;color:var(--accent);text-decoration:none">Ver →</a>
+            </div>
+          </article>
+
+          <!-- Add two more for visual balance -->
+          <article class="case" role="listitem">
+            <div>
+              <div class="meta">Mobile • Flutter</div>
+              <h4>Gym App — UX móvil</h4>
+              <p>Experiencia de entrenamiento optimizada con rutinas dinámicas y seguimiento visual.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <small style="color:var(--muted)">Proyecto</small>
+              <a href="#" style="font-weight:700;color:var(--accent);text-decoration:none">Ver →</a>
+            </div>
+          </article>
+
+          <article class="case" role="listitem">
+            <div>
+              <div class="meta">Landing • Conversión</div>
+              <h4>Lead Magnet — Landing optimizada</h4>
+              <p>Estructura de contenido y A/B testing que aumentaron leads en un 52%.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <small style="color:var(--muted)">Proyecto</small>
+              <a href="#" style="font-weight:700;color:var(--accent);text-decoration:none">Ver →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="equipo" class="section">
+        <h3 class="section-title">Equipo</h3>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div class="owl-card" style="display:flex;gap:12px;align-items:center;min-width:220px;">
+            <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--card),transparent);display:grid;place-items:center;font-weight:800">PS</div>
+            <div>
+              <strong>Paula S.</strong>
+              <div style="color:var(--muted);font-size:0.9rem">Director de producto</div>
+            </div>
+          </div>
+
+          <div class="owl-card" style="display:flex;gap:12px;align-items:center;min-width:220px;">
+            <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--card),transparent);display:grid;place-items:center;font-weight:800">FV</div>
+            <div>
+              <strong>Florentina V.</strong>
+              <div style="color:var(--muted);font-size:0.9rem">Diseñadora Lider</div>
+            </div>
+          </div>
+
+          <div class="owl-card" style="display:flex;gap:12px;align-items:center;min-width:220px;">
+            <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--card),transparent);display:grid;place-items:center;font-weight:800">LV</div>
+            <div>
+              <strong>Lisandro V.</strong>
+              <div style="color:var(--muted);font-size:0.9rem">Desarrollador Web</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="section">
+        <h3 class="section-title">Hablemos</h3>
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start">
+          <div>
+            <p style="color:var(--muted);margin-top:0">Cuéntanos sobre tu proyecto y te enviaremos una propuesta personalizada.</p>
+            <div class="owl-card contact-card">
+              <form id="contactForm" onsubmit="return sendForm(event)">
+                <label class="sr-only">Nombre</label>
+                <input name="name" placeholder="Tu nombre" required />
+                <label class="sr-only">Email</label>
+                <input name="email" placeholder="Correo electrónico" type="email" required />
+                <label class="sr-only">Mensaje</label>
+                <textarea name="message" placeholder="Cuéntanos brevemente" rows="4" required></textarea>
+                <div style="display:flex;gap:8px;margin-top:8px">
+                  <button class="btn-primary" type="submit">Enviar propuesta</button>
+                  <button type="button" class="btn-outline" onclick="location.href='#portafolio'">Ver trabajos</button>
+                </div>
+                <small style="color:var(--muted);display:block;margin-top:8px">Respuesta en 48 horas hábiles.</small>
+              </form>
+            </div>
+          </div>
+
+          <aside>
+            <div class="owl-card" style="padding:18px;">
+              <strong>Contacto directo</strong>
+              <div style="color:var(--muted);margin-top:8px">hola@noxtua.example<br/>+54 9 11 1234 5678</div>
+              <div style="margin-top:14px;color:var(--muted)">Oficina: Mendoza, Argentina</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <strong>NOXTUA</strong> — Agencia de Desarrollo & Diseño</div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <small style="color:var(--muted)">Síguenos</small>
+        <a href="#" style="color:var(--muted);text-decoration:none">Dribbble</a>
+        <a href="#" style="color:var(--muted);text-decoration:none">Behance</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function sendForm(e){
+      e.preventDefault();
+      const form = e.currentTarget;
+      const data = new FormData(form);
+      // Este formulario no envía a un servidor real. Reemplaza la lógica para integrarlo con tu backend.
+      const name = data.get('name');
+      document.querySelector('.btn-primary').textContent = 'Enviando...';
+      setTimeout(()=>{
+        alert('Gracias ' + name + '! Hemos recibido tu solicitud. Te contactaremos pronto.');
+        form.reset();
+        document.querySelector('.btn-primary').textContent = 'Enviar propuesta';
+      },900);
+      return false;
+    }
+  </script>
+</body>
+</html>
