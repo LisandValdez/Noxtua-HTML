@@ -12,130 +12,8 @@
   
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <style>
-    :root {
-      --bg: #071126;
-      --card: #0f1724;
-      --muted: #9aa7b6;
-      --accent: #d4a72a;
-    }
-
-    body {
-      font-family: "semplicitapro", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-      background: linear-gradient(180deg, var(--bg) 0%, #081028 60%);
-      color: #e6eef6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .btn-primary {
-      background: linear-gradient(90deg, var(--accent), #ffb84c);
-      color: #071126;
-      font-weight: 700;
-      transition: transform 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--muted);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-    }
-
-    .section-title {
-      font-weight: 800;
-      font-size: 1.75rem;
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-
-    /* EQUIPO */
-    #equipo {
-      padding: 6rem 1rem;
-      background: #0b1424;
-    }
-
-    .equipo {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .miembro {
-      text-align: center;
-      background: var(--card);
-      border-radius: 12px;
-      padding: 2rem;
-      width: 260px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .miembro:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .miembro img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 2px solid var(--accent);
-    }
-
-    .miembro h4 {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-
-    .miembro p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    
-    /* Animaciones personalizadas */
-    .fade-up-element {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-    
-    .fade-down-element {
-      opacity: 0;
-      transform: translateY(-30px);
-      transition: all 0.6s ease;
-    }
-    
-    .fade-in-element {
-      opacity: 0;
-      transition: all 0.8s ease;
-    }
-    
-    .fade-up-element.visible,
-    .fade-down-element.visible,
-    .fade-in-element.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
 </head>
 
 <body class="text-slate-100">
@@ -190,40 +68,39 @@
     <span class="inline-block bg-[rgba(212,167,42,0.1)] text-[var(--accent)] px-4 py-2 rounded-full text-sm font-semibold mb-4 backdrop-blur-sm">
       Agencia NOXTUA
     </span>
-    <h2 class="text-5xl font-extrabold mb-6 leading-tight">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
       Diseñamos productos digitales que inspiran confianza y funcionan con precisión.
     </h2>
-    <p class="text-[#9aa7b6] mb-8 text-lg max-w-xl backdrop-blur-sm bg-[rgba(15,23,36,0.3)] rounded-lg p-4">
+    <p class="text-[#9aa7b6] mb-8 text-base md:text-lg max-w-xl backdrop-blur-sm bg-[rgba(15,23,36,0.3)] rounded-lg p-4">
       Combinamos diseño estratégico y desarrollo moderno para impulsar tu marca y conectar con tus clientes.
     </p>
   </div>
 
   <!-- Botones y banners alineados -->
-  <div class="flex flex-col items-start md:items-end gap-6 relative z-10" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+  <div class="flex flex-col items-center md:items-end gap-6 relative z-10 w-full md:w-auto" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
     <!-- Botones en una fila -->
-    <div class="flex flex-wrap justify-end gap-4">
-      <a href="#contacto" class="btn-primary px-6 py-4 rounded-lg shadow-lg text-center w-56 backdrop-blur-sm bg-[rgba(212,167,42,0.9)]">
+    <div class="flex flex-col md:flex-row flex-wrap justify-center md:justify-end gap-4 w-full">
+      <a href="#contacto" class="btn-primary px-6 py-4 rounded-lg shadow-lg text-center w-full md:w-56 backdrop-blur-sm bg-[rgba(212,167,42,0.9)]">
         Solicitar propuesta
       </a>
-      <a href="#portafolio" class="btn-outline px-6 py-4 rounded-lg text-center w-56 backdrop-blur-sm bg-[rgba(15,23,36,0.6)]">
+      <a href="#portafolio" class="btn-outline px-6 py-4 rounded-lg text-center w-full md:w-56 backdrop-blur-sm bg-[rgba(15,23,36,0.6)]">
         Ver portafolio
       </a>
     </div>
 
     <!-- Banners en una fila debajo -->
-    <div class="flex flex-wrap justify-end gap-6">
-      <div class="bg-[#0f1724] px-6 py-4 rounded-lg shadow-md text-center w-40 backdrop-blur-sm bg-[rgba(15,23,36,0.8)]" data-aos="zoom-in" data-aos-delay="400">
+    <div class="flex flex-col md:flex-row flex-wrap justify-center md:justify-end gap-4 md:gap-6 w-full">
+      <div class="bg-[#0f1724] px-6 py-4 rounded-lg shadow-md text-center w-full md:w-40 backdrop-blur-sm bg-[rgba(15,23,36,0.8)]" data-aos="zoom-in" data-aos-delay="400">
         <strong class="block text-xl">+3 años</strong>
         <small class="text-[#9aa7b6]">de experiencia</small>
       </div>
-      <div class="bg-[#0f1724] px-6 py-4 rounded-lg shadow-md text-center w-40 backdrop-blur-sm bg-[rgba(15,23,36,0.8)]" data-aos="zoom-in" data-aos-delay="600">
+      <div class="bg-[#0f1724] px-6 py-4 rounded-lg shadow-md text-center w-full md:w-40 backdrop-blur-sm bg-[rgba(15,23,36,0.8)]" data-aos="zoom-in" data-aos-delay="600">
         <strong class="block text-xl">+12 proyectos</strong>
         <small class="text-[#9aa7b6]">entregados</small>
       </div>
     </div>
   </div>
 </section>
-
 
   <!-- Servicios -->
   <section id="servicios" class="py-24 bg-[#0b1424]">
