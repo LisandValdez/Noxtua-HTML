@@ -52,10 +52,11 @@
 
     .equipo {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 2rem;
       justify-content: center;
-      max-width: 1000px;
+      max-width: 1200px;
+      overflow-x: auto;
       margin: 0 auto;
     }
 
@@ -64,7 +65,8 @@
       background: var(--card);
       border-radius: 12px;
       padding: 2rem;
-      width: 260px;
+      min-width: 260px;
+      flex-shrink: 0;
       transition: all 0.3s ease;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -320,9 +322,41 @@
     }
     
     /* MEDIA QUERIES PARA DISPOSITIVOS MÓVILES Y ESCRITORIO */
+
+    /* Media queries actualizadas para la sección equipo */
+@media (max-width: 1200px) {
+  .equipo {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .equipo {
+    max-width: 900px;
+    gap: 1.5rem;
+  }
+  
+  .miembro {
+    min-width: 230px;
+    padding: 1.5rem;
+  }
+}
+
     
     /* PANTALLAS GRANDES (768px+) - Botones a la derecha */
     @media (min-width: 768px) {
+      .equipo {
+    flex-wrap: wrap; /* En tablets pequeñas, permite que se envuelvan */
+    justify-content: center;
+    gap: 1.5rem;
+    overflow-x: visible;
+  }
+  
+  .miembro {
+    width: calc(50% - 1rem); /* 2 elementos por fila */
+    min-width: auto;
+    max-width: 280px;
+  }
       .hero-section {
         padding-top: 10rem;
         flex-direction: row; /* Cambia a fila en pantallas grandes */
@@ -408,6 +442,10 @@
       .hero-stats {
         justify-content: center;
       }
+      .equipo {
+        flex-wrap: wrap;
+        overflow-x: auto;
+      }
     }
     
     @media (max-width: 480px) {
@@ -426,6 +464,10 @@
       .hero-stat {
         padding: 0.875rem 1.25rem;
         max-width: 8.75rem;
+      }
+      .equipo {
+        flex-wrap: wrap;
+        overflow-x: auto;
       }
     }
     
@@ -461,6 +503,10 @@
         flex: 1;
         min-width: 8rem;
       }
+      .equipo {
+        flex-wrap: wrap;
+        overflow-x: auto;
+      }
     }
 
     /* Resto de media queries para otras secciones */
@@ -486,6 +532,8 @@
       /* Equipo */
       .equipo {
         gap: 1.5rem;
+        flex-wrap: wrap;
+        overflow-x: auto;
       }
       
       .miembro {
@@ -525,6 +573,10 @@
         width: 100px;
         height: 100px;
       }
+      .equipo {
+        flex-wrap: wrap;
+        overflow-x: auto;
+      }
     }
     
     @media (max-width: 370px) {
@@ -553,5 +605,9 @@
       /* Miembros del equipo */
       .miembro {
         padding: 1rem;
+      }
+      .equipo {
+        flex-wrap: wrap;
+        overflow-x: auto;
       }
     }
