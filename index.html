@@ -204,17 +204,46 @@
       <div data-aos="fade-right" data-aos-duration="800">
         <h3 class="section-title text-[var(--accent)] mb-6">Hablemos</h3>
         <p class="text-[#9aa7b6] mb-6">Cuéntanos sobre tu proyecto y te enviaremos una propuesta personalizada.</p>
-        <form class="grid gap-4">
-          <input type="text" placeholder="Tu nombre" class="bg-transparent border border-[#1e293b] p-3 rounded-lg text-slate-100" required>
-          <input type="email" placeholder="Correo electrónico" class="bg-transparent border border-[#1e293b] p-3 rounded-lg text-slate-100" required>
-          <textarea rows="4" placeholder="Cuéntanos brevemente" class="bg-transparent border border-[#1e293b] p-3 rounded-lg text-slate-100"></textarea>
-          <button class="btn-primary px-5 py-3 rounded-lg mt-2">Enviar mensaje</button>
-        </form>
+        <form 
+  class="grid gap-4"
+  action="https://formsubmit.co/noxtuacreative@gmail.com"
+  method="POST"
+>
+  <input 
+    type="text" 
+    name="name" 
+    placeholder="Tu nombre" 
+    class="bg-transparent border border-[#1e293b] p-3 rounded-lg text-slate-100" 
+    required
+  >
+
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Correo electrónico" 
+    class="bg-transparent border border-[#1e293b] p-3 rounded-lg text-slate-100" 
+    required
+  >
+
+  <textarea 
+    name="message" 
+    rows="4" 
+    placeholder="Cuéntanos brevemente" 
+    class="bg-transparent border border-[#1e293b] p-3 rounded-lg text-slate-100"
+  ></textarea>
+
+  <button 
+    type="submit" 
+    class="btn-primary px-5 py-3 rounded-lg mt-2"
+  >
+    Enviar mensaje
+  </button>
+</form>
       </div>
 
       <div class="bg-[#0f1724] p-6 rounded-xl shadow-md" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <h4 class="font-semibold mb-3">Contacto directo</h4>
-        <p class="text-[#9aa7b6]">hola@noxtua.example<br>+54 9 11 1234 5678</p>
+        <p class="text-[#9aa7b6]">noxtuacreative@gmail.com<br>+54 9 11 1234 5678</p>
         <p class="text-[#9aa7b6] mt-3">Oficina: Mendoza, Argentina</p>
       </div>
     </div>
