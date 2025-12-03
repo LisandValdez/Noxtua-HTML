@@ -253,14 +253,34 @@
         <p class="text-[#9aa7b6] mt-3">Oficina: Mendoza, Argentina</p>
       </div>
     </div>
+
+    <!-- POPUP -->
+<div id="popup" class="fixed inset-0 hidden items-center justify-center bg-black/40 backdrop-blur-sm">
+  <div class="bg-[#071126] p-8 rounded-2xl shadow-xl max-w-sm text-center border border-[#d4a72a]">
+    <h3 class="text-[#d4a72a] text-xl font-semibold mb-3">¡Mensaje enviado!</h3>
+    <p class="text-[#9aa7b6] mb-6">Gracias por contactarte. Te responderemos pronto.</p>
+    <button id="closePopup" class="px-4 py-2 rounded-lg bg-[#d4a72a] text-[#071126] font-semibold">
+      Cerrar
+    </button>
+  </div>
+</div>
   </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-[#1e293b] py-6 text-center text-[#9aa7b6] text-sm">
-    © 2025 <strong>NOXTUA</strong> — Agencia de Desarrollo & Diseño
-  </footer>
-
   <script>
+
+    const form = document.getElementById("contactForm");
+  const popup = document.getElementById("popup");
+  const closePopup = document.getElementById("closePopup");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita recargar la página
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+  });
+
+  closePopup.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    popup.classList.remove("flex");
+  });
     // Inicializar AOS (Animate On Scroll)
     AOS.init({
       duration: 800,
@@ -289,7 +309,7 @@
         observer.observe(el);
       });
     });
-  </script>
 
+  </script>
 </body>
 </html>
