@@ -444,37 +444,38 @@
           submitBtn.classList.add("opacity-70", "cursor-not-allowed");
 
           try {
-    const response = await fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-    });
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: formData,
+              headers: {
+                "Accept": "application/json"
+              }
+            });
 
-    if (!response.ok) {
-        // Analizar diferentes códigos de error
-        if (response.status === 0) {
-            throw new Error("No se pudo conectar con el servidor. Posible bloqueo de red.");
-        } else if (response.status === 403) {
-            throw new Error("El servicio está bloqueado en esta red. Intenta desde otra conexión.");
-        } else if (response.status === 429) {
-            throw new Error("Demasiadas solicitudes. Espera unos minutos.");
-        }
-    }
+            const result = await response.json();
 
-    const result = await response.json();
-    // ... resto del código
-} catch (error) {
-    // Mensajes más específicos
-    if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
-        openPopup("error", "Error de conexión", 
-            "No se pudo conectar con el servidor de correo. Esto puede deberse a:\n" +
-            "• Bloqueo de red o firewall\n" +
-            "• Extensión del navegador bloqueando la solicitud\n" +
-            "• Problemas temporales del servicio\n\n" +
-            "Intenta desde otra red o dispositivo."
-        );
-    }
-} finally {
+            if (response.ok) {
+              form.reset();
+
+              openPopup(
+                "success",
+                "Consulta enviada",
+                "Gracias por escribirnos. Revisaremos tu mensaje y te responderemos a la brevedad."
+              );
+            } else {
+              openPopup(
+                "error",
+                "No se pudo enviar",
+                result.message || "Ocurrió un error al enviar el formulario. Inténtalo nuevamente."
+              );
+            }
+          } catch (error) {
+            openPopup(
+              "error",
+              "Error de conexión",
+              "No pudimos enviar tu mensaje en este momento. Revisa tu conexión e inténtalo nuevamente."
+            );
+          } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnText;
             submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
