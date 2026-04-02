@@ -422,13 +422,13 @@
       }
       
       .hero-content {
-        text-align: left;
+        text-align: center;
         max-width: none;
         flex: 1;
       }
       
       .hero-title {
-        font-size: 3rem;
+        font-size: 2rem;
       }
       
       .hero-description {
@@ -506,8 +506,13 @@
     }
     
     @media (max-width: 480px) {
+      .hero-section {
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+      }
       .hero-title {
-        font-size: 1rem;
+        padding-left: 0; 
+        font-size: 0.3rem;
       }
       
       .hero-description {
@@ -529,13 +534,9 @@
     }
     
     @media (max-width: 370px) {
-      .hero-section {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
       
       .hero-title {
-        font-size: 1.75rem;
+        font-size: 1rem;
       }
       
       .hero-description {
