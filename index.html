@@ -26,6 +26,12 @@
 
 <body class="text-slate-100">
 
+  <div id="loadingScreen" class="loading-screen">
+    <div class="logo-container">
+      <img src="assets/NOXTUA logotipo vertical.png" alt="Logo de la marca" id="brandLogo" class="brand-logo">
+    </div>
+  </div>
+
 <!-- Marca de agua global NOXTUA -->
 <div class="pb-4 fixed inset-y-0 left-0 w-[320px] lg:w-[420px] xl:w-[500px] z-[1] pointer-events-none hidden md:flex items-center overflow-hidden">
   <img
@@ -386,6 +392,20 @@
   </div>
 
   <script>
+      // Duración de la animación del logo: 2 segundos
+    const ANIMATION_DURATION = 2000; // 2 segundos
+    
+    // Esperar a que la animación termine
+    setTimeout(function() {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.classList.add('hide');
+      
+      // Opcional: remover del DOM después de la transición
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 600);
+    }, ANIMATION_DURATION);
+
     // Inicializar AOS
     AOS.init({
       duration: 800,

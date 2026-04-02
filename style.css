@@ -10,10 +10,66 @@
       font-family: "semplicitapro", sans-serif;
       font-weight: 700;
       font-style: normal;
-      background: linear-gradient(180deg, var(--bg) 0%, #081028 60%);
+      background-color: #071126;
       color: #e6eef6;
       -webkit-font-smoothing: antialiased;
     }
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #9aa7b6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.logo-container {
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.04);
+
+  animation: logoFadeElegant 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes logoFadeElegant {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.04);
+  }
+
+  60% {
+    opacity: 0.75;
+    filter: blur(2px);
+    transform: scale(1.015);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+.loading-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
 
     .btn-primary {
       background: linear-gradient(90deg, var(--accent), #ffb84c);
